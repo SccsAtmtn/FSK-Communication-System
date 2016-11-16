@@ -1,13 +1,12 @@
-module clk_Gen(mainclk, reset, clk2, clk32, clk288)
+module GenClk(mainclk, reset, clk2, clk32, clk288);
 
 input mainclk, reset;
-output clk2, clk32, clk288;
-reg clk2, clk32, clk288;
+output reg clk2, clk32, clk288;
 
 reg count;
 reg [4:0] count32;
 reg [8:0] count288;
-
+reg flag;
 always@(posedge mainclk or negedge reset)
 begin
 	if(~reset) begin
@@ -17,21 +16,31 @@ begin
 		count <= 1'b0;
 		count32 <= 5'b00000;
 		count288 <= 9'b000000000;
+        flag <= 1;
 	end
+    else if (flag==1) begin
+        clk2 <= ~clk2;
+        clk32 <= ~clk32;
+        clk288 <= ~clk288;
+        count <= 1'b0;
+		count32 <= 5'b00000;
+		count288 <= 9'b000000000;
+        flag <= 0;
+    end
 	else begin
 		if(count == 1'b1) begin
 			clk2 <= ~clk2;
-			count <= 1'b0
+			count <= 1'b0;
 		end
 		else count <= count + 1;
 		
-		if(count32 == 5'b10000) begin
+		if(count32 == 5'b11111) begin
 			clk32 <= ~clk32;
 			count32 <= 5'b00000;
 		end
 		else count32 <= count32 + 1;
 		
-		if(count288 == 9'b010010000) begin
+		if(count288 == 9'b100011111) begin
 			clk288 <= ~clk288;
 			count288 <= 9'b000000000;
 		end
