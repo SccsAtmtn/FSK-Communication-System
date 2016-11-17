@@ -1,9 +1,9 @@
 module rFSK(clk, reset, datain, dataout);
 
 input clk, reset, datain;
-output reg [8:0] dataout;
+output reg [11:0] dataout;
 
-reg [8:0] data;
+reg [11:0] data;
 reg [3:0] k, j;
 reg flag;
 
@@ -21,7 +21,7 @@ begin
         begin
             if (flag==1)
             begin
-                if (k==8)
+                if (k==11)
                 begin
                     k <= 0;
                     dataout <= data;    

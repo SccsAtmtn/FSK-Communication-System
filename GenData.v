@@ -1,9 +1,9 @@
-module GenData(clk288, reset, dataout);
-input clk288, reset;
+module GenData(clkData, reset, dataout);
+input clkData, reset;
 output [7:0] dataout;
 reg [7:0] dataout;
 
-always@(posedge clk288 or negedge reset) begin
+always@(posedge clkData or negedge reset) begin
 	if(~reset) begin
 		dataout <= 8'b00000000;
 	end

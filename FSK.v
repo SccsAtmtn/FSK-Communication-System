@@ -1,7 +1,7 @@
 module FSK(clk, reset, datain, dataout);
 
 input clk, reset;
-input [8:0] datain;
+input [11:0] datain;
 output reg dataout;
 
 reg flag;
@@ -21,7 +21,7 @@ begin
         if (cnt==15) 
         begin
             cnt <= 0;
-            if (i==8)
+            if (i==11)
             begin
                 i <= 0;
             end
