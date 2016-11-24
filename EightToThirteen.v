@@ -5,4 +5,5 @@ output [12:0] dataout;
 
 assign dataout = {datain, 5'b00000};
 
+
 endmodule

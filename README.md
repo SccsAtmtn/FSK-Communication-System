@@ -1,12 +1,12 @@
 # A Communication Simulating System 
 
 ## Abstraction
-This is a communication simulating system  to implement the data transmission based on PCM coding, Hamming coding/parity checking coding and FSK modulation. It is developed by Verilog and tested on FPGA. You can use two rows of led lights to observe the data that is sent and received seperately. The received data will lag for a period because of the FSK demodulation. 
+This is a communication simulating system  to implement the data transmission based on PCM coding, Hamming coding/parity checking coding and FSK modulation. It is developed by Verilog and tested on FPGA. You can use two rows of led lights to observe the data that is sent and received seperately. The received data will lag for one period because of the FSK demodulation, and for easy observation, I delay the input data for one period.
 
 ## Requirements
 - The system is simulated by **Modelsim SE-64 10.2c** on **Windows 10 64bit**.
 - The system's synthesis is completed by **Quartus II 13.0sp1** on **Windows 10 64bit**.
-- The system is tested on FPGA **Cyclone II**.
+- The system is tested on FPGA **Cyclone IV**.
 
 ## Technologies
 The most important technologies implemented in this system are as follows:
